@@ -126,7 +126,7 @@ all_countries <- all_countries %>%
                            country=="England" ~ "UK",
                            TRUE ~ country),
          country=as.character(country)) %>%
-  filter(!country %in% c("Africa", "Caribbean")) %>%
+  filter(!country %in% c("Africa", "Caribbean", "USA")) %>%
   unnest(country)
 
 # get map
@@ -339,7 +339,7 @@ all_countries <- all_countries %>%
                            TRUE ~ country),
          country=as.character(country)) %>%
   filter(!country %in% c("Africa", "Caribbean", "England", "Albany", 
-                         "Lesser Antilles", "Lesser Antilles (multiple countries)")) %>%
+                         "Lesser Antilles", "Lesser Antilles (multiple countries)", "USA")) %>%
   unnest(country) %>% 
   group_by(country) %>%
   dplyr::summarise(count=sum(count))
@@ -462,7 +462,7 @@ all_countries <- all_countries %>%
   filter(!country %in% c("Africa", "Caribbean", "England", "Albany", 
                          "Lesser Antilles", "Lesser Antilles (multiple countries)",
                          "Greater and Lesser Antilles", "Lesser Antilles islands",
-                         "West Indies")) %>%
+                         "West Indies", "USA")) %>%
   unnest(country) %>% 
   group_by(country) %>%
   dplyr::summarise(count=sum(count))
